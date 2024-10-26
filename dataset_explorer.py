@@ -83,13 +83,13 @@ def main():
     encoding = st.selectbox("Encoding", ['utf-8', 'latin1', 'iso-8859-1', 'cp1252'], index=0)  # Encoding selection
 
     if dataset_source == "Local file":
-        uploaded_file = st.file_uploader("Choose a file")
+        uploaded_file = st.file_uploader("Choose a file (must be a CSV file):")
         if uploaded_file is not None:
             df = load_data(uploaded_file, sep, header, encoding, is_url=False)
         else:
             df = None
     else:
-        dataset_url = st.text_input("Enter the dataset URL (must be a CSV file)")
+        dataset_url = st.text_input("Enter the dataset URL (must be a CSV file):")
         if dataset_url:
             df = load_data(dataset_url, sep, header, encoding, is_url=True)
         else:
